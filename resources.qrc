@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/"/>
+    <qresource prefix="/cursors">
+        <file alias="MainCursor">img/cursors/maincursor.png</file>
+    </qresource>
+    <qresource prefix="/splash">
+        <file alias="MainSplash">img/splash/splash.png</file>
+    </qresource>
+    <qresource prefix="/other">
+        <file alias="ArrowNext">img/other/next.png</file>
+        <file alias="Bottom">img/other/bottom.png</file>
+        <file alias="Delete">img/other/delete.png</file>
+        <file alias="Down">img/other/down.png</file>
+        <file alias="Freeze">img/other/freeze.png</file>
+        <file alias="Top">img/other/top.png</file>
+        <file alias="UnFreeze">img/other/unfreeze.png</file>
+        <file alias="Up">img/other/up.png</file>
+        <file alias="Clear">img/other/clear.png</file>
+        <file alias="Expand">img/other/expand.png</file>
+        <file alias="Constrict">img/other/constrict.png</file>
+        <file alias="Database">img/other/database.png</file>
+        <file alias="Directory">img/other/directory.png</file>
+        <file alias="File">img/other/file.png</file>
+    </qresource>
+</RCC>

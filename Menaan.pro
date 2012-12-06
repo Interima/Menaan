@@ -28,7 +28,7 @@ lupdate {
     qml/Menaan/HelpTab.qml\
     qml/Menaan/ImgButton.qml\
     qml/Menaan/InputFrame.qml\
-    qml/Menaan/JobCreaterForm.qml\
+    qml/Menaan/JobCreatorForm.qml\
     qml/Menaan/JobCreator.js\
     qml/Menaan/JobInfoDelegate.qml\
     qml/Menaan/JobInfoHeader.qml\

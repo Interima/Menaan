@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "Tools.js" as ToolsEngine
+import "qrc:/js/Tools.js" as ToolsEngine
 
 Rectangle
 {
@@ -44,14 +44,14 @@ Rectangle
         id: verticalScroll2;
         anchors.right: parent.right;
         anchors.rightMargin: 5;
-        position: jobCreaterForm.calcYPos();
-        pageSize: jobCreaterForm.calcHRatio()
+        position: jobCreatorForm.calcYPos();
+        pageSize: jobCreatorForm.calcHRatio()
         visible: false;
     }
 
-    JobCreaterForm
+    JobCreatorForm
     {
-        id: jobCreaterForm;
+        id: jobCreatorForm;
         anchors.left: parent.left;
         anchors.top: parent.top;
         anchors.bottom: parent.bottom;

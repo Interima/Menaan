@@ -22,4 +22,45 @@
         <file alias="Directory">img/other/directory.png</file>
         <file alias="File">img/other/file.png</file>
     </qresource>
+    <qresource prefix="/qml">
+        <file alias="Main.qml">qml/Menaan/main.qml</file>
+        <file alias="Menu.qml">qml/Menaan/Menu.qml</file>
+        <file alias="MenuItem.qml">qml/Menaan/MenuItem.qml</file>
+        <file alias="Message.qml">qml/Menaan/Message.qml</file>
+        <file alias="PluginInfoDelegate.qml">qml/Menaan/PluginInfoDelegate.qml</file>
+        <file alias="ProgressBar.qml">qml/Menaan/ProgressBar.qml</file>
+        <file alias="Separator.qml">qml/Menaan/Separator.qml</file>
+        <file alias="SimpleButton.qml">qml/Menaan/SimpleButton.qml</file>
+        <file alias="SimpleFrame.qml">qml/Menaan/SimpleFrame.qml</file>
+        <file alias="TabWidget.qml">qml/Menaan/TabWidget.qml</file>
+        <file alias="ToolsTab.qml">qml/Menaan/ToolsTab.qml</file>
+        <file alias="VScrollBar.qml">qml/Menaan/VScrollBar.qml</file>
+        <file alias="ImgButton.qml">qml/Menaan/ImgButton.qml</file>
+        <file alias="InputFrame.qml">qml/Menaan/InputFrame.qml</file>
+        <file alias="JobInfoDelegate.qml">qml/Menaan/JobInfoDelegate.qml</file>
+        <file alias="JobInfoHeader.qml">qml/Menaan/JobInfoHeader.qml</file>
+        <file alias="JobsTab.qml">qml/Menaan/JobsTab.qml</file>
+        <file alias="AboutTab.qml">qml/Menaan/AboutTab.qml</file>
+        <file alias="ConfigChanger.qml">qml/Menaan/ConfigChanger.qml</file>
+        <file alias="ConfigItem.qml">qml/Menaan/ConfigItem.qml</file>
+        <file alias="ConfigTab.qml">qml/Menaan/ConfigTab.qml</file>
+        <file alias="Container.qml">qml/Menaan/Container.qml</file>
+        <file alias="ExitTab.qml">qml/Menaan/ExitTab.qml</file>
+        <file alias="HelpTab.qml">qml/Menaan/HelpTab.qml</file>
+        <file alias="JobCreatorForm.qml">qml/Menaan/JobCreatorForm.qml</file>
+    </qresource>
+    <qresource prefix="/js">
+        <file alias="Config.js">qml/Menaan/Config.js</file>
+        <file alias="JobCreator.js">qml/Menaan/JobCreator.js</file>
+        <file alias="TabWidget.js">qml/Menaan/TabWidget.js</file>
+        <file alias="Tools.js">qml/Menaan/Tools.js</file>
+        <file alias="Msg.js">qml/Menaan/Msg.js</file>
+        <file alias="Menu.js">qml/Menaan/Menu.js</file>
+    </qresource>
+    <qresource prefix="/tr">
+        <file alias="En">menaan_en.ts</file>
+        <file alias="De">menaan_de.ts</file>
+        <file alias="Fr">menaan_fr.ts</file>
+        <file alias="Ru">menaan_ru.ts</file>
+    </qresource>
 </RCC>

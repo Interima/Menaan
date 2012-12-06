@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "Msg.js" as MsgEngine;
+import "qrc:/js/Msg.js" as MsgEngine;
 Rectangle
 {
     id: main;

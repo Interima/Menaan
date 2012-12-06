@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "Config.js" as ConfigEngine
+import "qrc:/js/Config.js" as ConfigEngine
 
 Rectangle
 {

@@ -45,12 +45,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     int lg = configData->getLanguage();
     switch (lg)
     {
-        case ConfigData::English: trans.load("menaan_en"); break;
-        case ConfigData::Russian: trans.load("menaan_ru"); break;
-        case ConfigData::Germany: trans.load("menaan_de"); break;
-        case ConfigData::French : trans.load("menaan_fr"); break;
+        case ConfigData::English: trans.load("qrc:/tr/En"); break;
+        case ConfigData::Russian: trans.load("qrc:/tr/Ru"); break;
+        case ConfigData::Germany: trans.load("qrc:/tr/De"); break;
+        case ConfigData::French : trans.load("qrc:/tr/Fr"); break;
 
-        default: trans.load("menaan_en");
+        default: trans.load("qrc:/tr/En");
     }
 
     app.installTranslator(&trans);

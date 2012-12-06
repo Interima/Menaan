@@ -1,6 +1,6 @@
 import QtQuick 1.1
 import ix2.interima.jobtypes 1.0
-import "JobCreator.js" as JobEngine;
+import "qrc:/js/JobCreator.js" as JobEngine;
 
 
 Rectangle

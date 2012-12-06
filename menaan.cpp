@@ -85,7 +85,7 @@ Menaan::Menaan(ConfigData * cfg, QWidget *parent) :
     qmlRegisterUncreatableType<JobStates>("ix2.interima.jobstates", 1, 0,"JobStates","Error");
     qmlRegisterUncreatableType<JobTypes>("ix2.interima.jobtypes", 1, 0,"JobTypes","Error");
 
-    view->setSource(QUrl::fromLocalFile("qml/Menaan/main.qml"));
+    view->setSource(QUrl("qrc:/qml/Main.qml"));
     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 
 

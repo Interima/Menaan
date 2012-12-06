@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "TabWidget.js" as TabWidgetEngine
+import "qrc:/js/TabWidget.js" as TabWidgetEngine
 
 Rectangle
 {

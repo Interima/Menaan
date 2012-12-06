@@ -250,57 +250,57 @@ Click to close.</source>
 <context>
     <name>JobCreaterForm</name>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="47"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="59"/>
         <source>Input path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="48"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="60"/>
         <source>Write input path or drag it here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="57"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="120"/>
         <source>Output path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="58"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="121"/>
         <source>Write output path or drag it here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="66"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="167"/>
         <source>Key:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="67"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="168"/>
         <source>Write key or drag it here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="75"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="190"/>
         <source>Special:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="76"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="191"/>
         <source>Write special parameters or drag it here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="84"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="212"/>
         <source>Encode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="96"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="224"/>
         <source>Decode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreaterForm.qml" line="109"/>
+        <location filename="qml/Menaan/JobCreaterForm.qml" line="237"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
@@ -308,22 +308,22 @@ Click to close.</source>
 <context>
     <name>JobCreator</name>
     <message>
-        <location filename="qml/Menaan/JobCreator.js" line="19"/>
+        <location filename="qml/Menaan/JobCreator.js" line="18"/>
         <source>Invalid input path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreator.js" line="28"/>
+        <location filename="qml/Menaan/JobCreator.js" line="27"/>
         <source>Invalid output path.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreator.js" line="37"/>
+        <location filename="qml/Menaan/JobCreator.js" line="36"/>
         <source>Invalid key.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobCreator.js" line="67"/>
+        <location filename="qml/Menaan/JobCreator.js" line="77"/>
         <source>Mena&apos;an</source>
         <translation type="unfinished"></translation>
     </message>
@@ -331,29 +331,64 @@ Click to close.</source>
 <context>
     <name>JobInfoDelegate</name>
     <message>
-        <location filename="qml/Menaan/JobInfoDelegate.qml" line="94"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="91"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="383"/>
         <source>Stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoDelegate.qml" line="95"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="92"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="384"/>
         <source>Running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoDelegate.qml" line="96"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="93"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="385"/>
         <source>Finished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoDelegate.qml" line="97"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="94"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="386"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoDelegate.qml" line="98"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="95"/>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="387"/>
         <source>Frozen</source>
         <oldsource>Freezed</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="317"/>
+        <source>Ticket:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="335"/>
+        <source>Source:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="354"/>
+        <source>Destination:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="373"/>
+        <source>State:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="395"/>
+        <source>Priority:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoDelegate.qml" line="413"/>
+        <source>Progress:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -375,22 +410,27 @@ Click to close.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoHeader.qml" line="73"/>
+        <location filename="qml/Menaan/JobInfoHeader.qml" line="71"/>
         <source>Algorithm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoHeader.qml" line="88"/>
+        <location filename="qml/Menaan/JobInfoHeader.qml" line="86"/>
         <source>State</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoHeader.qml" line="102"/>
+        <location filename="qml/Menaan/JobInfoHeader.qml" line="100"/>
         <source>Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/Menaan/JobInfoHeader.qml" line="129"/>
+        <location filename="qml/Menaan/JobInfoHeader.qml" line="114"/>
+        <source>Priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/Menaan/JobInfoHeader.qml" line="127"/>
         <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
@@ -398,74 +438,105 @@ Click to close.</source>
 <context>
     <name>Menaan</name>
     <message>
-        <location filename="menaan.cpp" line="147"/>
+        <location filename="menaan.cpp" line="204"/>
         <source>Input directory not exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="190"/>
+        <location filename="menaan.cpp" line="247"/>
         <source>Input file not exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="158"/>
+        <location filename="menaan.cpp" line="163"/>
+        <location filename="menaan.cpp" line="215"/>
         <source>Output directory not exists.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="168"/>
+        <location filename="menaan.cpp" line="156"/>
+        <source>Database file not exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="menaan.cpp" line="170"/>
+        <source>Can&apos;t open database file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="menaan.cpp" line="225"/>
         <source>Output directory can&apos;t be input directory.
 Please enable &apos;Use Special Ext&apos; option.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="199"/>
+        <location filename="menaan.cpp" line="256"/>
         <source>Output file can&apos;t be input file.
 Please enable &apos;Use Special Ext&apos; option.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="324"/>
+        <location filename="menaan.cpp" line="370"/>
         <source>Can&apos;t open input file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="327"/>
+        <location filename="menaan.cpp" line="373"/>
         <source>Can&apos;t open output file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="330"/>
+        <location filename="menaan.cpp" line="376"/>
         <source>Can&apos;t read from input file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="333"/>
+        <location filename="menaan.cpp" line="379"/>
         <source>Can&apos;t write in output file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="336"/>
+        <location filename="menaan.cpp" line="382"/>
         <source>Can&apos;t init plugin.
 Check special parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="339"/>
+        <location filename="menaan.cpp" line="385"/>
         <source>Can&apos;t read magic number.
 May be the file wasn&apos;t encoded by Mena&apos;an.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="342"/>
+        <location filename="menaan.cpp" line="388"/>
         <source>An error occured.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="menaan.cpp" line="342"/>
+        <location filename="menaan.cpp" line="388"/>
         <source>
 Job ticket: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="menaan.cpp" line="399"/>
+        <source>Open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="menaan.cpp" line="413"/>
+        <source>Open directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="menaan.cpp" line="424"/>
+        <source>Open database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="menaan.cpp" line="424"/>
+        <source>Mena&apos;an Database Files (*.mdbase)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

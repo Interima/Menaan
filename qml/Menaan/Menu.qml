@@ -1,5 +1,5 @@
 import QtQuick 1.1
-import "Menu.js" as MenuEngine
+import "qrc:/js/Menu.js" as MenuEngine
 
 Rectangle
 {

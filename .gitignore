@@ -1,4 +1,6 @@
-.*
-*.qm
+build/*
+app
 *~
+.*
+!build/CMakeLists.txt
 !.gitignore

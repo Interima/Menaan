@@ -1,0 +1,60 @@
+<RCC>
+    <qresource prefix="/"/>
+    <qresource prefix="/cursors">
+        <file alias="MainCursor">images/cursors/maincursor.png</file>
+    </qresource>
+    <qresource prefix="/splash">
+        <file alias="MainSplash">images/splash/splash.png</file>
+    </qresource>
+    <qresource prefix="/other">
+        <file alias="ArrowNext">images/other/next.png</file>
+        <file alias="Bottom">images/other/bottom.png</file>
+        <file alias="Delete">images/other/delete.png</file>
+        <file alias="Down">images/other/down.png</file>
+        <file alias="Freeze">images/other/freeze.png</file>
+        <file alias="Top">images/other/top.png</file>
+        <file alias="UnFreeze">images/other/unfreeze.png</file>
+        <file alias="Up">images/other/up.png</file>
+        <file alias="Clear">images/other/clear.png</file>
+        <file alias="Expand">images/other/expand.png</file>
+        <file alias="Constrict">images/other/constrict.png</file>
+        <file alias="Database">images/other/database.png</file>
+        <file alias="Directory">images/other/directory.png</file>
+        <file alias="File">images/other/file.png</file>
+    </qresource>
+    <qresource prefix="/qml">
+        <file alias="Main.qml">qml/main.qml</file>
+        <file alias="Menu.qml">qml/Menu.qml</file>
+        <file alias="MenuItem.qml">qml/MenuItem.qml</file>
+        <file alias="Message.qml">qml/Message.qml</file>
+        <file alias="PluginInfoDelegate.qml">qml/PluginInfoDelegate.qml</file>
+        <file alias="ProgressBar.qml">qml/ProgressBar.qml</file>
+        <file alias="Separator.qml">qml/Separator.qml</file>
+        <file alias="SimpleButton.qml">qml/SimpleButton.qml</file>
+        <file alias="SimpleFrame.qml">qml/SimpleFrame.qml</file>
+        <file alias="TabWidget.qml">qml/TabWidget.qml</file>
+        <file alias="ToolsTab.qml">qml/ToolsTab.qml</file>
+        <file alias="VScrollBar.qml">qml/VScrollBar.qml</file>
+        <file alias="ImgButton.qml">qml/ImgButton.qml</file>
+        <file alias="InputFrame.qml">qml/InputFrame.qml</file>
+        <file alias="JobInfoDelegate.qml">qml/JobInfoDelegate.qml</file>
+        <file alias="JobInfoHeader.qml">qml/JobInfoHeader.qml</file>
+        <file alias="JobsTab.qml">qml/JobsTab.qml</file>
+        <file alias="AboutTab.qml">qml/AboutTab.qml</file>
+        <file alias="ConfigChanger.qml">qml/ConfigChanger.qml</file>
+        <file alias="ConfigItem.qml">qml/ConfigItem.qml</file>
+        <file alias="ConfigTab.qml">qml/ConfigTab.qml</file>
+        <file alias="Container.qml">qml/Container.qml</file>
+        <file alias="ExitTab.qml">qml/ExitTab.qml</file>
+        <file alias="HelpTab.qml">qml/HelpTab.qml</file>
+        <file alias="JobCreatorForm.qml">qml/JobCreatorForm.qml</file>
+    </qresource>
+    <qresource prefix="/js">
+        <file alias="Config.js">qml/js/Config.js</file>
+        <file alias="JobCreator.js">qml/js/JobCreator.js</file>
+        <file alias="TabWidget.js">qml/js/TabWidget.js</file>
+        <file alias="Tools.js">qml/js/Tools.js</file>
+        <file alias="Msg.js">qml/js/Msg.js</file>
+        <file alias="Menu.js">qml/js/Menu.js</file>
+    </qresource>
+</RCC>

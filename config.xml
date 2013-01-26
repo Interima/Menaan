@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config>
-	<language>1</language>
-	<multiThread>1</multiThread>
-	<jobsRun>1</jobsRun>
-	<autoFinishedDelete>0</autoFinishedDelete>
-	<ext>1</ext>
-	<rewrite>0</rewrite>
-</config>

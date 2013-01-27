@@ -76,7 +76,7 @@ Message("\nStarting...\n")
     Set(CMAKE_AUTOMOC ON)
 
     # uncomment if debug no need
-    #Add_Definitions(-DQT_NO_DEBUG_OUTPUT)
+    Add_Definitions(-DQT_NO_DEBUG_OUTPUT)
 
     Find_Package(Qt5Xml REQUIRED)
     Find_Package(Qt5LinguistTools REQUIRED)

@@ -1,0 +1,30 @@
+=======================================
+Installation guide
+=======================================
+
+  1. Go to Menaan/build directory
+	  [ cd Menaan/build ] (Linux)
+
+  2. Run cmake with CMakeLists.txt
+	  [ cmake CMakeLists.txt ] (Linux)
+
+  3. Run make install
+	  [ make install ] (Linux)
+
+  4. Go to Menaan/app
+	  [ cd ../app ] (Linux)
+
+  5. Change permission to Menaan
+	  [ chmod a+x. ./Menaan ] (Linux)
+
+  6. Run Mena'an 
+	  [ ./Menaan ] (Linux)
+
+
+=======================================
+Debug output
+=======================================
+
+  If you need debug output in console,
+  comment  [ Add_Definitions(-DQT_NO_DEBUG_OUTPUT) ]
+  in CMakeLists.txt.

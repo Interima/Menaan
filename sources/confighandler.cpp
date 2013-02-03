@@ -46,33 +46,8 @@ bool ConfigHandler::characters(const QString &ch)
 
 bool ConfigHandler::fatalError(const QXmlParseException &exception)
 {
-    // error occurred. tell to user error information
-    QMessageBox::critical(0,QObject::tr("Config Reader"),
-                         QObject::tr("Error in config file\nLine: %1\nColumn: %2\nError: %3")
-                         .arg(exception.lineNumber())
-                         .arg(exception.columnNumber())
-                         .arg(exception.message()),QMessageBox::Ok);
-
-    int ret = QMessageBox::information(0,QObject::tr("Recovery"),
-                                       QObject::tr("Do you want reset config?"),
-                                       QMessageBox::Yes,QMessageBox::No);
-
-
-    // try to recovery user config from default config file
-    switch (ret)
-    {
-        case QMessageBox::Yes:
-             if (Menaan::configDataRecovery())
-                 QMessageBox::information(0,QObject::tr("Recovery"),
-                                          QObject::tr("Config has been successfully restored!\nNow restart application."));
-             else
-                 QMessageBox::critical(0,QObject::tr("Recovery"),
-                                       QObject::tr("Can't recovery config file.\nPlease visit to application site."));
-
-
-        case QMessageBox::No: break;
-    }
-
+    // TODO
+    // show message about fatal error
 
     ::exit(1);
 }

@@ -1,26 +1,27 @@
 #include <QGraphicsSceneDragDropEvent>
 #include <QMimeData>
+#include <QCursor>
 #include "droparea.h"
 
-DropArea::DropArea(QDeclarativeItem *parent)
-        : QDeclarativeItem(parent), accepting(true)
+DropArea::DropArea(QQuickItem *parent)
+        : QQuickItem(parent), accepting(true)
 {
-    setAcceptDrops(accepting);
+    this->setAcceptHoverEvents((accepting));
 }
 
-void DropArea::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
+void DropArea::dragEnterEvent(QDragEnterEvent *event)
 {
     event->acceptProposedAction();
-    setCursor(Qt::DragMoveCursor);
+    setCursor(QCursor(Qt::DragMoveCursor));
 }
 
-void DropArea::dragLeaveEvent(QGraphicsSceneDragDropEvent *event)
+void DropArea::dragLeaveEvent(QDragLeaveEvent *event)
 {
     Q_UNUSED(event)
     unsetCursor();
 }
 
-void DropArea::dropEvent(QGraphicsSceneDragDropEvent *event)
+void DropArea::dropEvent(QDropEvent *event)
 {
     // if no text in mime
     if (!event->mimeData()->hasText()) return;
@@ -38,7 +39,10 @@ void DropArea::setAcceptingDrops(bool _accepting)
     if (accepting == _accepting) return;
 
     accepting = _accepting;
-    setAcceptDrops(accepting);
+
+    this->setAcceptHoverEvents(true);
+
+    //setAcceptDrops(accepting);
     emit acceptingDropsChanged();
 }
 

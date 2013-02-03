@@ -1,5 +1,5 @@
 #############################################################################
-# Tano - An Open IP TV Player
+# Menaan by Interima.x2 team
 # Copyright (C) 2012 Tadej Novak <tadej@tano.si>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -71,7 +71,7 @@ Message("\nStarting...\n")
 
 ################################################
     # Qt options
-    Set(QT_MIN_VERSION "5.0.0")
+    Set(QT_MIN_VERSION "5.0")
 
     Set(CMAKE_AUTOMOC ON)
 
@@ -81,7 +81,8 @@ Message("\nStarting...\n")
     Find_Package(Qt5Xml REQUIRED)
     Find_Package(Qt5LinguistTools REQUIRED)
     Find_Package(Qt5Widgets REQUIRED)
-    Find_Package(Qt5Declarative REQUIRED)
+    Find_Package(Qt5Quick REQUIRED)
+    Find_Package(Qt5Qml REQUIRED)
 
 ################################################
 
@@ -140,7 +141,7 @@ Message("\nStarting...\n")
     Add_Executable(${PROJECT} ${HEADERS} ${SOURCES}
                    ${QRC_SOURCES} ${TRANSLATIONS})
 
-    Qt5_Use_Modules(${PROJECT} Widgets Declarative Xml)
+    Qt5_Use_Modules(${PROJECT} Widgets Quick Qml Xml)
 ################################################
 
 ################################################
@@ -151,7 +152,3 @@ Message("\nStarting...\n")
     Install(FILES ${IN} DESTINATION "${CMAKE_INSTALL_PREFIX}/app/info")
     Install(FILES ${QM} DESTINATION "${CMAKE_INSTALL_PREFIX}/app/translations")
     Install(DIRECTORY ${SL} DESTINATION "${CMAKE_INSTALL_PREFIX}/app")
-
-#ADD_CUSTOM_TARGET(uninstall
-#    "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake")
-

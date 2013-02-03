@@ -1,7 +1,15 @@
 #include "menaan.h"
-#include <QHBoxLayout>
-#include <QtDeclarative/QDeclarativeContext>
-#include <QApplication>
+
+
+#include <QtGui/QGuiApplication>
+#include <QtGui/QScreen>
+#include <QtQuick/QQuickView>
+#include <QtQml/QQmlContext>
+#include <QtQml/QtQml>
+#include <QtCore/QTimer>
+#include <QtCore/QDebug>
+#include <QStyle>
+
 #include <QPluginLoader>
 #include <QtXml/QXmlSimpleReader>
 #include <QFile>
@@ -9,7 +17,6 @@
 #include <QDebug>
 #include <QTimer>
 #include <QFileDialog>
-#include <QSplashScreen>
 #include <QTranslator>
 
 #include "configdata.h"
@@ -17,44 +24,51 @@
 #include "jobstates.h"
 #include "jobtypes.h"
 
-
 void Menaan::splashRunner()
 {
     // create splash
-    QSplashScreen * splash = new QSplashScreen(QPixmap(":/splash/MainSplash"));
+    // dtor by timer event
+    splash = new QQuickView(QUrl("qrc:/splash/MainSplash.qml"));
+    splash->setFlags(Qt::FramelessWindowHint);
+
+    // center splash
+    //splash->setGeometry(
+    //        QStyle::alignedRect(
+    //                Qt::LeftToRight,
+    //                Qt::AlignCenter,
+    //                splash->size(),
+    //                QGuiApplication::primaryScreen()->availableGeometry()));
+
+    splash->show();
 
     // set show/close timers
-    QTimer* splashCloser = new QTimer(this);
-    QTimer* splashShower = new QTimer(this);
+    // dtor by parent
+    QTimer* splashTimer = new QTimer(this);
 
     // configure timers
-    splashShower->setSingleShot(true);
-    // !!! the second timers need because splashscreen have a bug
-    splashShower->setInterval(0);
+    splashTimer->setSingleShot(true);
+    splashTimer->setInterval(3000);
 
-    splashCloser->setSingleShot(true);
-    splashCloser->setInterval(2000);
+    connect(splashTimer,SIGNAL(timeout()),this,SLOT(show()));
+    connect(splashTimer,SIGNAL(timeout()),this,SLOT(splashDestroyer()));
 
-    connect(splashCloser,SIGNAL(timeout()),this,SLOT(show()));
-    connect(splashCloser,SIGNAL(timeout()),splash,SLOT(close()));
-    connect(splashShower,SIGNAL(timeout()),splash,SLOT(show()));
-
-    splashCloser->start();
-    splashShower->start();
+    splashTimer->start();
 }
 
-Menaan::Menaan(ConfigData * cfg, QWidget *parent) :
-        QWidget(parent),configData(cfg)
+Menaan::Menaan(ConfigData *cfg, QWindow *parent):
+        QQuickView(parent),configData(cfg)
 {
     qDebug()<<"[Menaan say:] Constructor started";
     qDebug()<<"[Menaan say:] Run splash";
 
     splashRunner();
 
+    this->setTitle("Mena'an");
+
     // hide close button
-    Qt::WindowFlags flags =  this->windowFlags();
-    flags &= ~Qt::WindowCloseButtonHint;
-    this->setWindowFlags(flags);
+    //Qt::WindowFlags flags =  this->windowFlags();
+    //flags &= ~Qt::WindowCloseButtonHint;
+    //this->setWindowFlags(flags);
 
     // set new cursor with hot spot
     QCursor * cur = new QCursor(QPixmap(":/cursors/MainCursor"),2,2);
@@ -75,8 +89,7 @@ Menaan::Menaan(ConfigData * cfg, QWidget *parent) :
     connect(jobManager,SIGNAL(raiseError(quint32,Worker::WorkerErrors)),
             this,SLOT(errorDispatch(quint32,Worker::WorkerErrors)));
 
-    view = new QDeclarativeView();
-    QDeclarativeContext* context = view->rootContext();
+    QQmlContext* context = this->rootContext();
     context->setContextProperty("pluginInfoModel",pluginInfoModel);
     context->setContextProperty("jobInfoModel",jobInfoModel);
     context->setContextProperty("menaan",this);
@@ -85,8 +98,8 @@ Menaan::Menaan(ConfigData * cfg, QWidget *parent) :
     qmlRegisterUncreatableType<JobStates>("ix2.interima.jobstates", 1, 0,"JobStates","Error");
     qmlRegisterUncreatableType<JobTypes>("ix2.interima.jobtypes", 1, 0,"JobTypes","Error");
 
-    view->setSource(QUrl("qrc:/qml/Main.qml"));
-    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    this->setSource(QUrl("qrc:/qml/Main.qml"));
+    this->setResizeMode(QQuickView::SizeRootObjectToView);
 
 
     emit configDataUpdated(configData->getLanguage(),
@@ -96,13 +109,8 @@ Menaan::Menaan(ConfigData * cfg, QWidget *parent) :
                            configData->getRewrite());
 
 
-    QHBoxLayout * lay = new QHBoxLayout();
-    lay->addWidget(view);
-    lay->setMargin(0);
-    this->setMinimumSize(800,400);
-    this->setLayout(lay);
+    this->setMinimumSize(QSize(800,400));
 }
-
 
 void Menaan::pluginLibraryLoader()
 {
@@ -294,34 +302,12 @@ void Menaan::downJob(int index)
     jobManager->controlJob(index,JobManager::Down);
 }
 
-/*****************************************************************************/
-bool Menaan::configDataRecovery()
-{
-    qDebug()<<"[Menaan say:] Start config recovery";
-
-    QString directory = QApplication::applicationDirPath();
-
-    //! remove old config file
-    QFile file(directory+"/config.xml");
-    bool res = file.remove();
-
-    qDebug()<<"[Menaan say:] Remove old config: "<<res;
-
-    //! copy default config
-    res = QFile::copy(directory+"/default.xml",directory+"/config.xml");
-
-    qDebug()<<"[Menaan say:] Recovery default config: "<<res;
-
-    return res;
-}
-
-
 bool Menaan::configDataSave(int l, int mt, int afd, int e, int r)
 {
     qDebug()<<"[Menaan say:] Saving new config";
 
     ConfigData data(l,mt,afd,e,r);
-    data.saveTo(QApplication::applicationDirPath()+"/config.xml");
+    data.saveTo(QCoreApplication::applicationDirPath()+"/config.xml");
 
     return true;
 }
@@ -329,7 +315,7 @@ bool Menaan::configDataSave(int l, int mt, int afd, int e, int r)
 
 bool Menaan::configDataImport(QString path)
 {
-    QString directory = QApplication::applicationDirPath();
+    QString directory = QCoreApplication::applicationDirPath();
 
     // remove old config file
     QFile file(directory+"/config.xml");
@@ -340,7 +326,7 @@ bool Menaan::configDataImport(QString path)
 
 bool Menaan::configDataExport(QString path)
 {
-    QString directory = QApplication::applicationDirPath();
+    QString directory = QCoreApplication::applicationDirPath();
     return QFile::copy(directory+"/config.xml",path);
 }
 
@@ -396,7 +382,7 @@ void Menaan::openFile(QString sender)
 {
     QString fileName;
 
-    fileName = QFileDialog::getOpenFileName(this,tr("Open file"),QDir::homePath());
+    fileName = QFileDialog::getOpenFileName(0,tr("Open file"),QDir::homePath());
 
     if (fileName.isEmpty()) return;
 
@@ -410,7 +396,7 @@ void Menaan::openDirectory(QString sender)
 
     QFileDialog::Options options = QFileDialog::DontResolveSymlinks | QFileDialog::ShowDirsOnly;
 
-    dirName = QFileDialog::getExistingDirectory(this,tr("Open directory"),QDir::homePath(),options);
+    dirName = QFileDialog::getExistingDirectory(0,tr("Open directory"),QDir::homePath(),options);
 
     if (dirName.isEmpty()) return;
 
@@ -421,7 +407,7 @@ void Menaan::openDatabase(QString sender)
 {
     QString dBase;
 
-    dBase = QFileDialog::getOpenFileName(this,tr("Open database"),QDir::homePath(),tr("Mena'an Database Files (*.mdbase)"));
+    dBase = QFileDialog::getOpenFileName(0,tr("Open database"),QDir::homePath(),tr("Mena'an Database Files (*.mdbase)"));
 
     if (dBase.isEmpty()) return;
 

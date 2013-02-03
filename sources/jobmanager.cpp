@@ -213,7 +213,6 @@ void JobManager::deleteJob(int index)
             // break worker event loop
             workerList.value(i)->quit();
 
-
             // WARNING !!!
             // WAIT BEFORE THREAD RECEIVE 'QUIT'
             workerList.value(i)->wait();

@@ -1,8 +1,7 @@
 #ifndef MENAAN_H
 #define MENAAN_H
 
-#include <QWidget>
-#include <QtDeclarative/QDeclarativeView>
+#include <QtQuick/QQuickView>
 #include "plugininfo.h"
 #include "plugininfomodel.h"
 #include "configdata.h"
@@ -11,16 +10,15 @@
 #include "jobmanager.h"
 #include "jobtypes.h"
 
-class Menaan : public QWidget
+class Menaan : public QQuickView
 {
     Q_OBJECT
 public:
 
-    Menaan(ConfigData* cfg, QWidget *parent = 0);
-    
-    void splashRunner();
+    Menaan(ConfigData * cfg, QWindow *parent = 0);
 
 private:
+
     void pluginLibraryLoader();
 
     QList<PluginInfo> pluginInfoList;
@@ -28,10 +26,15 @@ private:
     PluginInfoModel * pluginInfoModel;
     JobInfoModel * jobInfoModel;
     JobManager * jobManager;
-    QDeclarativeView * view;
     ConfigData * configData;
 
+    QQuickView * splash;
+
+    void splashRunner();
+
+
 public slots:
+
     void createJob(QString in, QString out, QString key, QString args,
                    /*JobTypes::JobType*/quint8 type, int plInd);
     void deleteJob(int index);
@@ -50,14 +53,15 @@ public slots:
     void exitRequired();
 
     static bool configDataSave(int l, int mt, int afd, int e, int r);
-    static bool configDataRecovery();
     static bool configDataExport(QString path);
     static bool configDataImport(QString path);
 
     static QString generateUnique(QString path);
 
 signals:
+
     void configDataUpdated(int l, int mt, int afd, int e, int r);
+
     void error(QString error);
 
     void dialogAnswer(QString sender, QString path);

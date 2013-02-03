@@ -58,6 +58,8 @@ public slots:
 
     static QString generateUnique(QString path);
 
+    void splashDestroyer();
+
 signals:
 
     void configDataUpdated(int l, int mt, int afd, int e, int r);

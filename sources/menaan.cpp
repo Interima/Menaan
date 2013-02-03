@@ -24,12 +24,19 @@
 #include "jobstates.h"
 #include "jobtypes.h"
 
+void Menaan::splashDestroyer()
+{
+    delete splash;
+}
+
 void Menaan::splashRunner()
 {
     // create splash
     // dtor by timer event
-    splash = new QQuickView(QUrl("qrc:/splash/MainSplash.qml"));
+    splash = new QQuickView(QUrl("qrc:/qml/MainSplash.qml"));
     splash->setFlags(Qt::FramelessWindowHint);
+
+
 
     // center splash
     //splash->setGeometry(

@@ -48,6 +48,7 @@
         <file alias="ExitTab.qml">qml/ExitTab.qml</file>
         <file alias="HelpTab.qml">qml/HelpTab.qml</file>
         <file alias="JobCreatorForm.qml">qml/JobCreatorForm.qml</file>
+        <file alias="MainSplash.qml">qml/MainSplash.qml</file>
     </qresource>
     <qresource prefix="/js">
         <file alias="Config.js">qml/js/Config.js</file>

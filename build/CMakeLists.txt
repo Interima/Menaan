@@ -76,7 +76,7 @@ Message("\nStarting...\n")
     Set(CMAKE_AUTOMOC ON)
 
     # uncomment if debug no need
-    Add_Definitions(-DQT_NO_DEBUG_OUTPUT)
+    #Add_Definitions(-DQT_NO_DEBUG_OUTPUT)
 
     Find_Package(Qt5Xml REQUIRED)
     Find_Package(Qt5LinguistTools REQUIRED)
@@ -141,7 +141,7 @@ Message("\nStarting...\n")
     Add_Executable(${PROJECT} ${HEADERS} ${SOURCES}
                    ${QRC_SOURCES} ${TRANSLATIONS})
 
-    Qt5_Use_Modules(${PROJECT} Widgets Quick Qml Xml)
+    Qt5_Use_Modules(${PROJECT} Quick Qml Xml)
 ################################################
 
 ################################################

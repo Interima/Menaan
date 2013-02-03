@@ -1,6 +1,4 @@
-#include <QtWidgets/QApplication>
-#include <QPixmap>
-#include <QBitmap>
+#include <QtGui/QGuiApplication>
 #include "menaan.h"
 #include <QTranslator>
 #include <QDebug>
@@ -9,7 +7,7 @@
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
 
     // we can't read config in menaan contructor
     // because translator must be create and installed before widgets creating
@@ -21,9 +19,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     // read config data for application
     {
-        QFile file(QApplication::applicationDirPath()+"/config.xml");
+        QFile file(QGuiApplication::applicationDirPath()+"/config.xml");
 
-        qDebug()<<"[Application say:] Check file"<<QApplication::applicationDirPath()+"/config.xml";
+        qDebug()<<"[Application say:] Check file"<<QGuiApplication::applicationDirPath()+"/config.xml";
 
         QXmlInputSource inputSource(&file);
         QXmlSimpleReader configReader;
@@ -46,23 +44,23 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     switch (lg)
     {
         case ConfigData::English:
-            trans.load(QApplication::applicationDirPath()+"/translations/en.qm");
+            trans.load(QGuiApplication::applicationDirPath()+"/translations/en.qm");
             break;
         case ConfigData::Russian:
-            trans.load(QApplication::applicationDirPath()+"/translations/ru.qm");
+            trans.load(QGuiApplication::applicationDirPath()+"/translations/ru.qm");
             break;
 
         case ConfigData::Germany:
-            trans.load(QApplication::applicationDirPath()+"/translations/de.qm");
+            trans.load(QGuiApplication::applicationDirPath()+"/translations/de.qm");
             break;
 
         case ConfigData::French:
-            trans.load(QApplication::applicationDirPath()+"/translations/fr.qm");
+            trans.load(QGuiApplication::applicationDirPath()+"/translations/fr.qm");
             break;
 
 
         default:
-            trans.load(QApplication::applicationDirPath()+"/translations/en.qm");
+            trans.load(QGuiApplication::applicationDirPath()+"/translations/en.qm");
     }
 
     app.installTranslator(&trans);

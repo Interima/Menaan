@@ -72,6 +72,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 color: "#FFFFFF";
+                textFormat: Text.StyledText;
                 text: qsTr("Interima. ix2\
                             <br>Interima. Cry\
                             <br>Interima. InMay\
@@ -160,6 +161,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 wrapMode: TextEdit.WordWrap;
+                textFormat: Text.StyledText;
                 color: "#FFFFFF";
                 text: qsTr("THE SOFTWARE IS PROVIDED 'AS IS',\
 WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, \

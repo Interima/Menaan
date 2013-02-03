@@ -4,6 +4,7 @@ Rectangle
 {
     width: childrenRect.width;
     height: childrenRect.height;
+    color: "#00000000";
 
     Image
     {

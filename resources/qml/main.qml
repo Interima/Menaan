@@ -3,8 +3,8 @@ import "qrc:/js/Msg.js" as MsgEngine;
 Rectangle
 {
     id: main;
-    width: 200
-    height: 200
+    width: 800
+    height: 400
     color: "#4A5570"
 
     Connections

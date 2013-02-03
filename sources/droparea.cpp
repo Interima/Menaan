@@ -1,4 +1,4 @@
-#include <QGraphicsSceneDragDropEvent>
+
 #include <QMimeData>
 #include <QCursor>
 #include "droparea.h"

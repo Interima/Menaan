@@ -9,6 +9,9 @@ Rectangle
     anchors.fill: parent;
     anchors.margins: 10;
 
+    // in Qt5 visible and opacity are independed
+    visible: opacity==0 ? false : true;
+
     property string titleText: "default text";
     property string titleColor: "#ffffff";
     property int titleSize: 14;
@@ -76,6 +79,6 @@ Rectangle
          }
     ]
 
-    Behavior on opacity { NumberAnimation { duration: 400 }}
+    Behavior on opacity { NumberAnimation { duration: 600 }}
 
 }

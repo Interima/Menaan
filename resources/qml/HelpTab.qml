@@ -66,6 +66,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 wrapMode: TextEdit.WordWrap;
+                textFormat: Text.StyledText;
                 color: "#FFFFFF";
                 text: qsTr("<i>\"Tools\"</i> pane displays the list of avaiable cryptographic algorithms and its features.<br><br>\
  Cryptographic algorithms are designed as plugin and located in <i>\"/plugins\"</i> subdirectory in <i>\"Mena'an\"</i> installation path. You can add\
@@ -119,6 +120,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 wrapMode: TextEdit.WordWrap;
+                textFormat: Text.StyledText;
                 color: "#FFFFFF";
                 text: qsTr("<i>\"Job List\"</i> pane displays the list of jobs that you created.<br><br>\
  Every job provides information about itself.<br><br>\
@@ -170,6 +172,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 wrapMode: TextEdit.WordWrap;
+                textFormat: Text.StyledText;
                 color: "#FFFFFF";
                 text: qsTr("<i>\"Config\"</i> pane displays configuration of <i>\"Mena'an\"</i>.<br><br>\
  You can select option by clicking on arrow.<br><br>\
@@ -229,6 +232,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 wrapMode: TextEdit.WordWrap;
+                textFormat: Text.StyledText;
                 color: "#FFFFFF";
                 text: qsTr("<i>\"Help\"</i> pane displays help pages of application.<br><br>\
  For detailed help you may visit developer's site: <i>www.blogspot.exsector.com</i> \
@@ -276,6 +280,7 @@ Rectangle
                 font.pixelSize: 12;
                 font.family: "DejaVu Sans";
                 wrapMode: TextEdit.WordWrap;
+                textFormat: Text.StyledText;
                 color: "#FFFFFF";
                 text: qsTr("<i>\"About\"</i> pane displays some information about developers and\
  license.<br><br>");

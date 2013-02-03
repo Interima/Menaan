@@ -1,4 +1,3 @@
-#include <QMessageBox>
 #include <QCoreApplication>
 #include <QDebug>
 

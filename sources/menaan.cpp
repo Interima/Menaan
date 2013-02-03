@@ -8,7 +8,6 @@
 #include <QtQml/QtQml>
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
-#include <QStyle>
 
 #include <QPluginLoader>
 #include <QtXml/QXmlSimpleReader>
@@ -16,8 +15,6 @@
 #include <QDir>
 #include <QDebug>
 #include <QTimer>
-#include <QFileDialog>
-#include <QTranslator>
 
 #include "configdata.h"
 #include "droparea.h"
@@ -37,14 +34,19 @@ void Menaan::splashRunner()
     splash->setFlags(Qt::FramelessWindowHint);
 
 
-
     // center splash
-    //splash->setGeometry(
-    //        QStyle::alignedRect(
-    //                Qt::LeftToRight,
-    //                Qt::AlignCenter,
-    //                splash->size(),
-    //                QGuiApplication::primaryScreen()->availableGeometry()));
+    int width, height;
+    int offsetX, offsetY;
+
+    width = QGuiApplication::primaryScreen()->availableGeometry().width();
+    height = QGuiApplication::primaryScreen()->availableGeometry().height();
+
+    offsetX = (width - splash->size().width())/2;
+    offsetY = (height - splash->size().height())/2;
+
+
+    splash->setGeometry(offsetX, offsetY,
+                        splash->size().width(), splash->size().height());
 
     splash->show();
 
@@ -117,6 +119,21 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
 
 
     this->setMinimumSize(QSize(800,400));
+
+    // center splash
+    int width, height;
+    int offsetX, offsetY;
+
+    width = QGuiApplication::primaryScreen()->availableGeometry().width();
+    height = QGuiApplication::primaryScreen()->availableGeometry().height();
+
+
+    offsetX = (width - this->width())/2;
+    offsetY = (height - this->height())/2;
+
+
+    this->setGeometry(offsetX, offsetY,
+                      this->width(), this->height());
 }
 
 void Menaan::pluginLibraryLoader()
@@ -389,7 +406,7 @@ void Menaan::openFile(QString sender)
 {
     QString fileName;
 
-    fileName = QFileDialog::getOpenFileName(0,tr("Open file"),QDir::homePath());
+    //fileName = QFileDialog::getOpenFileName(0,tr("Open file"),QDir::homePath());
 
     if (fileName.isEmpty()) return;
 
@@ -401,9 +418,9 @@ void Menaan::openDirectory(QString sender)
 {
     QString dirName;
 
-    QFileDialog::Options options = QFileDialog::DontResolveSymlinks | QFileDialog::ShowDirsOnly;
+    //QFileDialog::Options options = QFileDialog::DontResolveSymlinks | QFileDialog::ShowDirsOnly;
 
-    dirName = QFileDialog::getExistingDirectory(0,tr("Open directory"),QDir::homePath(),options);
+    //dirName = QFileDialog::getExistingDirectory(0,tr("Open directory"),QDir::homePath(),options);
 
     if (dirName.isEmpty()) return;
 
@@ -414,7 +431,7 @@ void Menaan::openDatabase(QString sender)
 {
     QString dBase;
 
-    dBase = QFileDialog::getOpenFileName(0,tr("Open database"),QDir::homePath(),tr("Mena'an Database Files (*.mdbase)"));
+    //dBase = QFileDialog::getOpenFileName(0,tr("Open database"),QDir::homePath(),tr("Mena'an Database Files (*.mdbase)"));
 
     if (dBase.isEmpty()) return;
 

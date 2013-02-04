@@ -14,63 +14,18 @@
 #include <QFile>
 #include <QDir>
 #include <QDebug>
-#include <QTimer>
 
 #include "configdata.h"
 #include "droparea.h"
 #include "jobstates.h"
 #include "jobtypes.h"
 
-void Menaan::splashDestroyer()
-{
-    delete splash;
-}
-
-void Menaan::splashRunner()
-{
-    // create splash
-    // dtor by timer event
-    splash = new QQuickView(QUrl("qrc:/qml/MainSplash.qml"));
-    splash->setFlags(Qt::FramelessWindowHint);
-
-
-    // center splash
-    int width, height;
-    int offsetX, offsetY;
-
-    width = QGuiApplication::primaryScreen()->availableGeometry().width();
-    height = QGuiApplication::primaryScreen()->availableGeometry().height();
-
-    offsetX = (width - splash->size().width())/2;
-    offsetY = (height - splash->size().height())/2;
-
-
-    splash->setGeometry(offsetX, offsetY,
-                        splash->size().width(), splash->size().height());
-
-    splash->show();
-
-    // set show/close timers
-    // dtor by parent
-    QTimer* splashTimer = new QTimer(this);
-
-    // configure timers
-    splashTimer->setSingleShot(true);
-    splashTimer->setInterval(3000);
-
-    connect(splashTimer,SIGNAL(timeout()),this,SLOT(show()));
-    connect(splashTimer,SIGNAL(timeout()),this,SLOT(splashDestroyer()));
-
-    splashTimer->start();
-}
 
 Menaan::Menaan(ConfigData *cfg, QWindow *parent):
         QQuickView(parent),configData(cfg)
 {
     qDebug()<<"[Menaan say:] Constructor started";
     qDebug()<<"[Menaan say:] Run splash";
-
-    splashRunner();
 
     this->setTitle("Mena'an");
 
@@ -120,7 +75,7 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
 
     this->setMinimumSize(QSize(800,400));
 
-    // center splash
+    // center window
     int width, height;
     int offsetX, offsetY;
 

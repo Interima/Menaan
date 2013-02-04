@@ -28,10 +28,6 @@ private:
     JobManager * jobManager;
     ConfigData * configData;
 
-    QQuickView * splash;
-
-    void splashRunner();
-
 
 public slots:
 
@@ -57,8 +53,6 @@ public slots:
     static bool configDataImport(QString path);
 
     static QString generateUnique(QString path);
-
-    void splashDestroyer();
 
 signals:
 

@@ -67,7 +67,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     Menaan * mainWidget = new Menaan(configData);
 
-    Q_UNUSED(mainWidget)
+    mainWidget->show();
 
     return app.exec();
 }

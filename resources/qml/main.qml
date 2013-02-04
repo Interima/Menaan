@@ -7,6 +7,34 @@ Rectangle
     height: 400
     color: "#4A5570"
 
+    Timer
+    {
+       interval: 2000;
+       repeat: false;
+       running: true;
+       onTriggered:
+       {
+            tablet.opacity = 1;
+            splash.opacity = 0;
+       }
+    }
+
+    MainSplash
+    {
+        id: splash;
+        visible: true;
+        opacity: 1;
+
+        Behavior on opacity
+        {
+            NumberAnimation
+            {
+                duration: 600;
+                onRunningChanged: if (!running) splash.visible = false;
+            }
+        }
+    }
+
     Connections
     {
         target: menaan;
@@ -15,7 +43,17 @@ Rectangle
 
     TabWidget
     {
-        id :tablet;
+        id: tablet;
+        visible: true;
+        opacity: 0;
+
+        Behavior on opacity
+        {
+            NumberAnimation
+            {
+                duration: 600;
+            }
+        }
     }
 
 }

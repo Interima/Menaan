@@ -4,6 +4,7 @@
 #include <QtQuick/QQuickView>
 #include "plugininfo.h"
 #include "plugininfomodel.h"
+#include "driveinfomodel.h"
 #include "configdata.h"
 #include "confighandler.h"
 #include "jobinfomodel.h"
@@ -24,6 +25,7 @@ private:
     QList<PluginInfo> pluginInfoList;
     QList<JobInfo> jobInfoList;
     PluginInfoModel * pluginInfoModel;
+    DriveInfoModel * driveInfoModel;
     JobInfoModel * jobInfoModel;
     JobManager * jobManager;
     ConfigData * configData;

@@ -115,7 +115,7 @@ Message("\nStarting...\n")
 
     Set(SPECIAL_PATH "../spec")
 
-    Set(SL "${SPECIAL_PATH}/plugins")
+    Set(SL       "${SPECIAL_PATH}/plugins")
     File(GLOB TS "${TRANSLATIONS_PATH}/*.ts")
     File(GLOB SP "${SPECIAL_PATH}/*.xml")
     File(GLOB IN "${INFO_PATH}/*.txt")

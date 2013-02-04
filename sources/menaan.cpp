@@ -50,6 +50,9 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
     pluginInfoModel = new PluginInfoModel(&pluginInfoList,this);
     jobInfoModel = new JobInfoModel(&jobInfoList,this);
     jobManager = new JobManager(jobInfoModel, configData, this);
+    driveInfoModel = new DriveInfoModel(this);
+    driveInfoModel->inflate();
+
     connect(jobManager,SIGNAL(raiseError(quint32,Worker::WorkerErrors)),
             this,SLOT(errorDispatch(quint32,Worker::WorkerErrors)));
 

@@ -54,7 +54,7 @@ Rectangle
         opacity: 1;
 
 
-        Behavior on opacity { NumberAnimation { duration : 400; } }
+        Behavior on opacity { NumberAnimation { duration : 600; } }
     }
 
     VScrollBar

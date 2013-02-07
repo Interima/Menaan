@@ -59,6 +59,7 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
     QQmlContext* context = this->rootContext();
     context->setContextProperty("pluginInfoModel",pluginInfoModel);
     context->setContextProperty("jobInfoModel",jobInfoModel);
+    context->setContextProperty("driveInfoModel",driveInfoModel);
     context->setContextProperty("menaan",this);
 
     qmlRegisterType<DropArea>("ix2.interima.droparea", 1, 0, "DropArea");
@@ -360,16 +361,11 @@ void Menaan::errorDispatch(quint32 ticket, Worker::WorkerErrors err)
 
 /*****************************************************************************/
 
-void Menaan::openFile(QString sender)
+void Menaan::openFile(QString filename)
 {
-    QString fileName;
-
-    //fileName = QFileDialog::getOpenFileName(0,tr("Open file"),QDir::homePath());
-
     if (fileName.isEmpty()) return;
 
     emit dialogAnswer(sender,fileName);
-
 }
 
 void Menaan::openDirectory(QString sender)

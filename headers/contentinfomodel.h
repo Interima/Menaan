@@ -1,38 +1,24 @@
-#ifndef DRIVEINFOMODEL_H
-#define DRIVEINFOMODEL_H
-
-#include "driveinfomodel.h"
-#include "driveinfo.h"
+#ifndef CONTENTINFOMODEL_H
+#define CONTENTINFOMODEL_H
 
 #include <QtCore/QtGlobal>
 #include <QtCore/QAbstractListModel>
+#include <QtCore/QDir>
 
 
-#ifdef Q_OS_WIN32
-    #include "windows.h"
-#endif
-
-#ifdef Q_OS_LINUX
-    #include "mntent.h"
-    #include "sys/statvfs.h"
-#endif
-
-
-class DriveInfoModel : public QAbstractListModel
+class ContentInfoModel : public QAbstractListModel
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString currentPath READ getCurrentPath() NOTIFY pathChanged())
 public:
 
-    enum DriveRoles
+    enum ContentItemRoles
     {
-        LabelRole = Qt::UserRole+1,
-        MountRole,
-        TotalSizeRole,
-        FreeSizeRole
+        ItemNameRole = Qt::UserRole+1
     };
 
-    explicit DriveInfoModel(QObject* parent=0);
+    explicit ContentInfoModel(QObject* parent=0);
 
     QVariant data(const QModelIndex &index, int role) const;
 
@@ -40,19 +26,29 @@ public:
 
     QHash <int,QByteArray> roleNames() const;
 
-    void inflate();
-
 private:
 
-    QList<DriveInfo> _data;
+    QStringList _data;
+    QString currentPath;
+    bool onlyFiles;
+    bool onlyDirs;
 
-#ifdef Q_OS_WIN32
-    void winInflate();
-#endif
+public slots:
 
-#ifdef Q_OS_LINUX
-    void nixInflate();
-#endif
+    void setOnlyFiles(bool onlyFilesState);
+    void setOnlyDirs(bool onlyDirsState);
+
+    void changePath(QString path);
+
+    void back();
+
+    void refresh();
+
+    QString getCurrentPath();
+
+signals:
+
+    void pathChanged();
 };
 
-#endif // DRIVEINFOMODEL_H
+#endif // CONTENTINFOMODEL_H

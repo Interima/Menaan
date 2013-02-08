@@ -5,6 +5,7 @@
 #include "plugininfo.h"
 #include "plugininfomodel.h"
 #include "driveinfomodel.h"
+#include "contentinfomodel.h"
 #include "configdata.h"
 #include "confighandler.h"
 #include "jobinfomodel.h"
@@ -14,6 +15,7 @@
 class Menaan : public QQuickView
 {
     Q_OBJECT
+
 public:
 
     Menaan(ConfigData * cfg, QWindow *parent = 0);
@@ -26,6 +28,7 @@ private:
     QList<JobInfo> jobInfoList;
     PluginInfoModel * pluginInfoModel;
     DriveInfoModel * driveInfoModel;
+    ContentInfoModel * contentInfoModel;
     JobInfoModel * jobInfoModel;
     JobManager * jobManager;
     ConfigData * configData;

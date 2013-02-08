@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "qrc:/js/Msg.js" as MsgEngine;
+
 Rectangle
 {
     id: main;
@@ -7,54 +8,59 @@ Rectangle
     height: 400
     color: "#4A5570"
 
-    Timer
+    PathDialog
     {
-       interval: 2000;
-       repeat: false;
-       running: true;
-       onTriggered:
-       {
-            tablet.opacity = 1;
-            splash.opacity = 0;
-       }
+        id: dialog;
     }
 
-    MainSplash
-    {
-        id: splash;
-        visible: true;
-        opacity: 1;
+//    Timer
+//    {
+//       interval: 2000;
+//       repeat: false;
+//       running: true;
+//       onTriggered:
+//       {
+//            tablet.opacity = 1;
+//            splash.opacity = 0;
+//       }
+//    }
 
-        Behavior on opacity
-        {
-            NumberAnimation
-            {
-                duration: 600;
-                onRunningChanged: if (!running) splash.visible = false;
-            }
-        }
-    }
+//    MainSplash
+//    {
+//        id: splash;
+//        visible: true;
+//        opacity: 1;
 
-    Connections
-    {
-        target: menaan;
-        onError: MsgEngine.errorMsg(error);
-    }
+//        Behavior on opacity
+//        {
+//            NumberAnimation
+//            {
+//                duration: 600;
+//                onRunningChanged: if (!running) splash.visible = false;
+//            }
+//        }
+//    }
 
-    TabWidget
-    {
-        id: tablet;
-        visible: true;
-        opacity: 0;
+//    Connections
+//    {
+//        target: menaan;
+//        onError: MsgEngine.errorMsg(error);
+//    }
 
-        Behavior on opacity
-        {
-            NumberAnimation
-            {
-                duration: 600;
-            }
-        }
-    }
+//    TabWidget
+//    {
+//        id: tablet;
+//        visible: true;
+//        opacity: 0;
+
+//        Behavior on opacity
+//        {
+//            NumberAnimation
+//            {
+//                duration: 600;
+//            }
+//        }
+//    }
 
 }
 

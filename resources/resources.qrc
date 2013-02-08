@@ -49,6 +49,9 @@
         <file alias="HelpTab.qml">qml/HelpTab.qml</file>
         <file alias="JobCreatorForm.qml">qml/JobCreatorForm.qml</file>
         <file alias="MainSplash.qml">qml/MainSplash.qml</file>
+        <file alias="PathDialog.qml">qml/PathDialog.qml</file>
+        <file alias="DriveInfoDelegate.qml">qml/DriveInfoDelegate.qml</file>
+        <file alias="ContentInfoDelegate.qml">qml/ContentInfoDelegate.qml</file>
     </qresource>
     <qresource prefix="/js">
         <file alias="Config.js">qml/js/Config.js</file>

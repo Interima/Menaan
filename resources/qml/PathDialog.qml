@@ -14,50 +14,55 @@ Rectangle
         anchors.top: parent.top;
         anchors.bottom: parent.bottom;
         anchors.right: driveContent.left;
+        anchors.rightMargin: 20;
+        color: parent.color;
+
+
+        SimpleFrame
+        {
+            id: header;
+            color: "#00000000";
+            height: 30;
+            anchors.top: parent.top;
+            width: parent.width;
+
+            Text
+            {
+                id: driveTitle;
+                anchors.horizontalCenter: parent.horizontalCenter;
+                anchors.verticalCenter: parent.verticalCenter;
+                font.pixelSize: 14;
+                font.family: "DejaVu Sans";
+                color: "#FFFFFF";
+                text: qsTr("Places:");
+            }
+        }
 
         ListView
         {
             id: driveListView
             anchors.left: parent.left;
-            anchors.top: parent.top;
+            anchors.top: header.bottom;
+            anchors.topMargin: 10;
             anchors.bottom: parent.bottom;
-            width: parent.width - driveVerticalScroll.width ;
-
-            header: Component
-                        {
-                           Rectangle
-                           {
-                               id: cont;
-                               color: "#00000000";
-                               height: 40;
-                               width: myListView.width;
-
-                               Text
-                               {
-                                   id: driveTitle;
-                                   anchors.horizontalCenter: parent.horizontalCenter;
-                                   anchors.verticalCenter: parent.verticalCenter;
-                                   font.pixelSize: 14;
-                                   font.family: "DejaVu Sans";
-                                   color: "#FFFFFF";
-                                   text: qsTr("Places:");
-                               }
-                           }
-                        }
-
+            width: parent.width - driveVerticalScroll.width*2 ;
 
 
             delegate: Component
                         {
                             DriveInfoDelegate
                             {
-                                width: myListView.width;
+                                width: driveListView.width;
                             }
                         }
+
+            //highlight: Rectangle{color:"red"; width:100; height: 200;}
+
+            snapMode: ListView.SnapToItem;
             spacing: 5;
             model: driveInfoModel;
-            opacity: 1;
-            visible: true;
+            clip:true;
+            focus:true;
 
             Behavior on opacity { NumberAnimation { duration : 600; } }
         }
@@ -67,7 +72,9 @@ Rectangle
         {
             id: driveVerticalScroll;
             anchors.right: parent.right;
-            anchors.rightMargin: 5;
+            anchors.rightMargin: 0;
+            anchors.top: driveListView.top;
+            anchors.bottom: driveListView.bottom;
             position: driveListView.visibleArea.yPosition;
             pageSize: driveListView.visibleArea.heightRatio;
         }
@@ -78,43 +85,43 @@ Rectangle
         {
             id: driveContent;
             anchors.margins: 10;
-            width: parent.width -200;
+            width: parent.width*3/4;
             anchors.top: parent.top;
             anchors.bottom: parent.bottom;
             anchors.right: parent.right;
+            color: parent.color;
+
+
+
+            SimpleFrame
+            {
+                id: contentHeader;
+                color: "#00000000";
+                height: 30;
+                width: parent.width;
+
+                Text
+                {
+                    id: pathTitle;
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.leftMargin: 4;
+                    font.pixelSize: 14;
+                    font.family: "DejaVu Sans";
+                    color: "#FFFFFF";
+                    text: qsTr("Path:")+ " " + contentInfoModel.currentPath;
+                }
+            }
+
 
             ListView
             {
                 id: contentListView
                 anchors.left: parent.left;
-                anchors.top: parent.top;
+                anchors.top: contentHeader.bottom;
                 anchors.bottom: parent.bottom;
-                width: parent.width - contentVerticalScroll.width ;
-
-                header:
-                Component
-                {
-                    Rectangle
-                    {
-                        id: contentHeader;
-                        color: "#00000000";
-                        height: 40;
-                        width: contentListView.width;
-
-                        Text
-                        {
-                            id: pathTitle;
-                            anchors.horizontalCenter: parent.horizontalCenter;
-                            anchors.verticalCenter: parent.verticalCenter;
-                            font.pixelSize: 14;
-                            font.family: "DejaVu Sans";
-                            color: "#FFFFFF";
-                            text: qsTr("Path:")+ " " + model.currentPath;
-                        }
-                    }
-                 }
-
-
+                anchors.topMargin: 10;
+                width: parent.width - contentVerticalScroll.width*2;
 
                 delegate: Component
                             {
@@ -124,11 +131,9 @@ Rectangle
                                 }
                             }
                 spacing: 5;
+                clip: true;
+                snapMode: ListView.SnapToItem;
                 model: contentInfoModel;
-                opacity: 1;
-                visible: true;
-
-                Behavior on opacity { NumberAnimation { duration : 600; } }
             }
 
 
@@ -136,7 +141,9 @@ Rectangle
             {
                 id: contentVerticalScroll;
                 anchors.right: parent.right;
-                anchors.rightMargin: 5;
+                anchors.rightMargin: 0;
+                anchors.top: contentListView.top;
+                anchors.bottom: contentListView.bottom;
                 position: contentListView.visibleArea.yPosition;
                 pageSize: contentListView.visibleArea.heightRatio;
             }

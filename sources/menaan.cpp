@@ -51,6 +51,7 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
     jobInfoModel = new JobInfoModel(&jobInfoList,this);
     jobManager = new JobManager(jobInfoModel, configData, this);
     driveInfoModel = new DriveInfoModel(this);
+    contentInfoModel = new ContentInfoModel(this);
     driveInfoModel->inflate();
 
     connect(jobManager,SIGNAL(raiseError(quint32,Worker::WorkerErrors)),
@@ -60,6 +61,7 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
     context->setContextProperty("pluginInfoModel",pluginInfoModel);
     context->setContextProperty("jobInfoModel",jobInfoModel);
     context->setContextProperty("driveInfoModel",driveInfoModel);
+    context->setContextProperty("contentInfoModel",contentInfoModel);
     context->setContextProperty("menaan",this);
 
     qmlRegisterType<DropArea>("ix2.interima.droparea", 1, 0, "DropArea");
@@ -361,11 +363,9 @@ void Menaan::errorDispatch(quint32 ticket, Worker::WorkerErrors err)
 
 /*****************************************************************************/
 
-void Menaan::openFile(QString filename)
+void Menaan::openFile(QString fileName)
 {
     if (fileName.isEmpty()) return;
-
-    emit dialogAnswer(sender,fileName);
 }
 
 void Menaan::openDirectory(QString sender)

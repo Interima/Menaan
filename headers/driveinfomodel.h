@@ -53,6 +53,11 @@ private:
 #ifdef Q_OS_LINUX
     void nixInflate();
 #endif
+
+public slots:
+
+    void refresh();
+
 };
 
 #endif // DRIVEINFOMODEL_H

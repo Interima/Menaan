@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import ix2.interima.jobtypes 1.0
+import x2.interima.jobtypes 1.0
 import "qrc:/js/JobCreator.js" as JobEngine;
 
 
@@ -243,5 +243,5 @@ Rectangle
         }
     }
 
-    Behavior on opacity { NumberAnimation { duration : 400; } }
+    Behavior on opacity { NumberAnimation { duration : 600; } }
 }

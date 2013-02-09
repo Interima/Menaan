@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import ix2.interima.jobstates 1.0
+import x2.interima.jobstates 1.0
 
 Rectangle
 {

@@ -21,6 +21,8 @@
         <file alias="Database">images/other/database.png</file>
         <file alias="Directory">images/other/directory.png</file>
         <file alias="File">images/other/file.png</file>
+        <file alias="Back">images/other/back.png</file>
+        <file alias="Refresh">images/other/refresh.png</file>
     </qresource>
     <qresource prefix="/qml">
         <file alias="Main.qml">qml/main.qml</file>

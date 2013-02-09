@@ -19,6 +19,7 @@
 #include "droparea.h"
 #include "jobstates.h"
 #include "jobtypes.h"
+#include "contenttypes.h"
 
 
 Menaan::Menaan(ConfigData *cfg, QWindow *parent):
@@ -64,9 +65,13 @@ Menaan::Menaan(ConfigData *cfg, QWindow *parent):
     context->setContextProperty("contentInfoModel",contentInfoModel);
     context->setContextProperty("menaan",this);
 
-    qmlRegisterType<DropArea>("ix2.interima.droparea", 1, 0, "DropArea");
-    qmlRegisterUncreatableType<JobStates>("ix2.interima.jobstates", 1, 0,"JobStates","Error");
-    qmlRegisterUncreatableType<JobTypes>("ix2.interima.jobtypes", 1, 0,"JobTypes","Error");
+    qmlRegisterType<DropArea>("x2.interima.droparea", 1, 0, "DropArea");
+    qmlRegisterUncreatableType<JobStates>("x2.interima.jobstates",
+                                          1, 0,"JobStates","Error");
+    qmlRegisterUncreatableType<JobTypes>("x2.interima.jobtypes",
+                                          1, 0,"JobTypes","Error");
+    qmlRegisterUncreatableType<ContentTypes>("x2.interima.contenttypes",
+                                          1, 0,"ContentTypes","Error");
 
     this->setSource(QUrl("qrc:/qml/Main.qml"));
     this->setResizeMode(QQuickView::SizeRootObjectToView);

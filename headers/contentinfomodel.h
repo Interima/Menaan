@@ -4,6 +4,7 @@
 #include <QtCore/QtGlobal>
 #include <QtCore/QAbstractListModel>
 #include <QtCore/QDir>
+#include <QtCore/QFileInfo>
 
 
 class ContentInfoModel : public QAbstractListModel
@@ -15,7 +16,8 @@ public:
 
     enum ContentItemRoles
     {
-        ItemNameRole = Qt::UserRole+1
+        ItemNameRole = Qt::UserRole+1,
+        ItemTypeRole
     };
 
     explicit ContentInfoModel(QObject* parent=0);
@@ -30,17 +32,24 @@ private:
 
     QStringList _data;
     QString currentPath;
+
     bool onlyFiles;
     bool onlyDirs;
+    bool onlyBase;
+
+    static QFileInfo typer;
+
 
 public slots:
 
     void setOnlyFiles(bool onlyFilesState);
     void setOnlyDirs(bool onlyDirsState);
+    void setOnlyBase(bool onlyBaseState);
 
     void changePath(QString path);
 
-    void back();
+    void cdUp();
+    void cdDown(QString path);
 
     void refresh();
 

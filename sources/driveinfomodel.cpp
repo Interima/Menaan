@@ -53,6 +53,12 @@ QVariant DriveInfoModel::data(const QModelIndex &index, int role) const
 }
 
 
+void DriveInfoModel::refresh()
+{
+    _data.clear();
+    inflate();
+}
+
 void DriveInfoModel::inflate()
 {
 

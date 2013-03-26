@@ -112,7 +112,6 @@ Container
             }
         }
 
-
         ListView
         {
             id: contentListView;
@@ -128,11 +127,11 @@ Container
                             ContentInfoDelegate
                             {
                                 width: contentListView.width;
-                                height: 20;
+                                height: 30;
 
                             }
                         }
-            spacing: 5;
+            spacing: 2;
             clip: true;
             snapMode: ListView.SnapToItem;
             model: contentInfoModel;

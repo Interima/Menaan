@@ -68,7 +68,7 @@ public:
         \param i - path to input file
         \param o - path to output data
         \param k - key
-        \param s-  special parameters
+        \param s - special parameters
         \param pi - plugin instance
         \param tp - type of job
     */

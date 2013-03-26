@@ -41,20 +41,21 @@ QVariant ContentInfoModel::data(const QModelIndex &index, int role) const
 
         case ItemTypeRole:
 
-            typer.setFile(currentPath+_data.at(index.row()));
+            typer.setFile(currentPath+"/"+_data.at(index.row()));
+
             if (typer.isDir()) return ContentTypes::Dir;
+
             else if (typer.isFile()) return ContentTypes::File;
+
             else if (typer.isSymLink()) return ContentTypes::Symlink;
-            else return ContentTypes::Unknown;
+
+            else return ContentTypes::Unknown; break;
 
        default: return QVariant();
     }
 }
 
-QString ContentInfoModel::getCurrentPath()
-{
-    return currentPath;
-}
+// View settings
 
 void ContentInfoModel::setOnlyDirs(bool onlyDirsState)
 {
@@ -71,6 +72,14 @@ void ContentInfoModel::setOnlyBase(bool onlyBaseState)
     onlyBase = onlyBaseState;
 }
 
+
+// Path control
+
+QString ContentInfoModel::getCurrentPath()
+{
+    return currentPath;
+}
+
 void ContentInfoModel::changePath(QString path)
 {
     currentPath = path;
@@ -78,6 +87,8 @@ void ContentInfoModel::changePath(QString path)
     refresh();
 
     emit pathChanged();
+
+    qDebug()<<currentPath;
 }
 
 void ContentInfoModel::cdDown(QString path)
@@ -85,11 +96,7 @@ void ContentInfoModel::cdDown(QString path)
     QDir dir(currentPath);
     if (!dir.cd(path)) return;
 
-    currentPath= dir.absolutePath();
-
-    refresh();
-
-    emit pathChanged();
+    changePath(dir.absolutePath());
 }
 
 void ContentInfoModel::cdUp()
@@ -98,11 +105,7 @@ void ContentInfoModel::cdUp()
 
     if (!dir.cdUp()) return;
 
-    currentPath = dir.absolutePath();
-
-    refresh();
-
-    emit pathChanged();
+    changePath(dir.absolutePath());
 }
 
 void ContentInfoModel::refresh()

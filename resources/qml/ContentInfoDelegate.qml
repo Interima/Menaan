@@ -6,80 +6,72 @@ Rectangle
     id: contentInfoDelegate;
 
     height: 30;
-
-    radius: 4;
-    smooth: true;
-    border.color: if (ListView.isCurrentItem) return "#FFFFFF";
-                  else return "#838EA8";
+    color: "#00000000";
 
     MouseArea
     {
         id: ma;
         anchors.fill: parent;
         hoverEnabled: true;
-        onEntered: {gradient = hovered; _itemName.color = "#FF000000";}
-        onExited: {gradient = released; _itemName.color = "#FFFFFFFF";}
+        onEntered: _itemName.anchors.leftMargin=60;
+        onExited: _itemName.anchors.leftMargin=10;
         onClicked: contentListView.currentIndex=index;
         onDoubleClicked: contentInfoModel.cdDown(model.itemName);
     }
 
-    Gradient
-    {
-        id: hovered;
-        GradientStop { position: 0.0; color: "#F0BBC6E0" }
-        GradientStop { position: 1.0; color: "#24BBC6E0" }
-    }
-
-    Gradient
-    {
-        id: released;
-        GradientStop { position: 0.0; color: "#87BBC6E0" }
-        GradientStop { position: 1.0; color: "#00BBC6E0" }
-    }
-
-    gradient: released;
-
-    Column
+    Rectangle
     {
         id: gr;
         anchors.fill: parent;
         anchors.margins: 5;
-
-        spacing: 6;
+        color: "#00000000";
 
         Text
         {
             id: _itemName;
             text: model.itemName;
-            color: "#FFFFFF";
-            width: parent.width - _itemType.width;
+            color: if (contentInfoDelegate.ListView.isCurrentItem) return "#FFFFFFFF";
+                   else return "#F0BBC6E0";
+            anchors.left: parent.left;
+            anchors.right: _itemType.left;
+            anchors.leftMargin: 10;
+            anchors.rightMargin: 10;
             font.family: "DejaVu Sans";
-            font.pixelSize: 12;
+            font.pixelSize: 14;
             horizontalAlignment: Text.AlignLeft;
             verticalAlignment: Text.AlignVCenter;
             height: parent.height;
             elide: Text.ElideMiddle;
+
+            Behavior on anchors.leftMargin { NumberAnimation { duration: 200 }}
+        }
+
+        Image
+        {
+            id: _itemType;
+            source: if (model.itemType==ContentTypes.File) return "qrc:/other/File"
+                  else if (model.itemType==ContentTypes.Dir) return "qrc:/other/Directory"
+                  else if (model.itemType==ContentTypes.Symlink) return "qrc:/other/File"
+                  else return "qrc:/other/File";
+
+            anchors.right: parent.right;
+            anchors.rightMargin: 10;
+            anchors.verticalCenter: parent.verticalCenter;
         }
     }
 
-    Text
+    Separator
     {
-        id: _itemType;
-        text: if (model.itemType==ContentTypes.File) return "  file";
-              else if (model.itemType==ContentTypes.Dir) return "  dir";
-              else if (model.itemType==ContentTypes.Symlink) return "  sym";
-              else return "  unknown";
-
-        color: "#FFFFFF";
+        anchors.top: gr.bottom;
+        anchors.topMargin: 2;
+        anchors.left: parent.left;
         anchors.right: parent.right;
-        font.family: "DejaVu Sans";
-        font.pixelSize: 12;
-        horizontalAlignment: Text.AlignLeft;
-        verticalAlignment: Text.AlignVCenter;
-        height: parent.height;
-        elide: Text.ElideMiddle;
-    }
+        sepColor: if (contentInfoDelegate.ListView.isCurrentItem) return "#FFFFFFFF";
+                  else return "#838EA8";
+        sepHeight: 1;
 
+
+    }
 
 }
 

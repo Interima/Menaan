@@ -6,6 +6,8 @@ Rectangle
     signal buttonClicked;
 
     property string imgSource: "";
+    property bool checked: false;
+    property bool isCheckable: false;
 
     radius: 4;
     smooth: true;
@@ -25,7 +27,17 @@ Rectangle
         GradientStop { position: 1.0; color: "#00BBC6E0" }
     }
 
-    gradient: if (mr.pressed) pressed; else released;
+    gradient:
+    {
+        if (isCheckable)
+        {
+            if (checked) pressed; else released;
+        }
+        else
+        {
+            if (mr.pressed) pressed; else released;
+        }
+    }
 
     Image
     {
@@ -35,14 +47,22 @@ Rectangle
         height: parent.height - 6;
         smooth: true;
         width: sourceSize.width/sourceSize.height*height;
-
     }
 
     MouseArea
     {
         id : mr;
         anchors.fill: parent;
-        onClicked: {btn.buttonClicked()}
+        onClicked:
+        {
+            if (isCheckable)
+            {
+                checked = !checked;
+                btn.buttonClicked(checked);
+                console.log(checked);
+            }
+            else  btn.buttonClicked();
+        }
     }
 
 }

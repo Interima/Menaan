@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import ix2.interima.droparea 1.0
+import x2.interima.droparea 1.0
 
 Rectangle
 {

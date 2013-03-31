@@ -10,6 +10,8 @@ ContentInfoModel::ContentInfoModel(QObject *parent) :
     QAbstractListModel(parent)
 {
     currentPath.clear();
+
+    onlyBase=onlyDirs=onlyFiles=false;
 }
 
 QHash <int,QByteArray> ContentInfoModel::roleNames() const
@@ -60,16 +62,19 @@ QVariant ContentInfoModel::data(const QModelIndex &index, int role) const
 void ContentInfoModel::setOnlyDirs(bool onlyDirsState)
 {
     onlyDirs = onlyDirsState;
+    refresh();
 }
 
 void ContentInfoModel::setOnlyFiles(bool onlyFilesState)
 {
     onlyFiles = onlyFilesState;
+    refresh();
 }
 
 void ContentInfoModel::setOnlyBase(bool onlyBaseState)
 {
     onlyBase = onlyBaseState;
+    refresh();
 }
 
 
@@ -112,12 +117,22 @@ void ContentInfoModel::refresh()
 {
     beginResetModel();
 
-    if (onlyDirs) _data = QDir(currentPath).entryList(QDir::Dirs|
-                                                      QDir::NoDotAndDotDot);
-    else if (onlyBase) _data = QDir(currentPath).entryList(
-                QStringList("*.mdbase"),
-                QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
-    else _data = QDir(currentPath).entryList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+    QDir::Filters filters=QDir::NoDotAndDotDot;
+
+    if (onlyDirs) filters|=QDir::Dirs;
+    if (onlyFiles) filters|=QDir::Files;
+
+    if (onlyDirs || onlyBase || onlyFiles)
+    {
+
+        if (onlyBase)
+            _data = QDir(currentPath).entryList(QStringList("*.mdbase"),filters);
+        else
+            _data = QDir(currentPath).entryList(filters);
+    }
+
+    else
+            _data = QDir(currentPath).entryList(QDir::AllEntries | QDir::NoDotAndDotDot);
 
     endResetModel();
 }

@@ -8,7 +8,7 @@ Rectangle
 
     radius: 4;
     smooth: true;
-    border.color: if (ListView.isCurrentItem) return "#FFFFFF";
+    border.color: if (ma.containsMouse) return "#FFFFFF";
                   else return "#838EA8";
 
     property string textColor: "#FFFFFFFF";
@@ -18,8 +18,8 @@ Rectangle
         id: ma;
         anchors.fill: parent;
         hoverEnabled: true;
-        onEntered: {gradient = hovered; textColor = "#FF000000";}
-        onExited: {gradient = released; textColor = "#FFFFFFFF";}
+        onEntered: {border.color = "#FFFFFFFF";}
+        onExited: {border.color = "#838EA8"}
         onClicked: {driveListView.currentIndex=index;
                     contentInfoModel.changePath(model.mount);}
     }
@@ -34,11 +34,12 @@ Rectangle
     Gradient
     {
         id: released;
-        GradientStop { position: 0.0; color: "#87BBC6E0" }
-        GradientStop { position: 1.0; color: "#00BBC6E0" }
+        GradientStop { position: 0.0; color: "#00000000" }
+        GradientStop { position: 1.0; color: "#00000000" }
     }
 
-    gradient: released;
+    gradient: if (ListView.isCurrentItem) return hovered;
+              else return released;
 
     Column
     {

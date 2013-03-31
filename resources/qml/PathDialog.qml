@@ -6,6 +6,9 @@ Container
     color: parent.color;
     anchors.fill: parent;
 
+    signal canceled ();
+    signal choosed (string path);
+
     Rectangle
     {
         id: driveBar;
@@ -36,6 +39,8 @@ Container
                 color: "#FFFFFF";
                 text: qsTr("Places:");
             }
+
+
         }
 
         ListView
@@ -87,8 +92,6 @@ Container
         anchors.right: parent.right;
         color: parent.color;
 
-
-
         SimpleFrame
         {
             id: contentHeader;
@@ -99,7 +102,7 @@ Container
             Text
             {
                 id: pathTitle;
-                anchors.right: parent.right;
+                anchors.right: filterDatabase.left;
                 anchors.left: parent.left;
                 anchors.verticalCenter: parent.verticalCenter;
                 anchors.margins: 5;
@@ -109,6 +112,45 @@ Container
                 elide: Text.ElideMiddle;
                 horizontalAlignment: Text.AlignHCenter;
                 text: qsTr("Path:")+ " " + contentInfoModel.currentPath;
+            }
+
+            ImgButton
+            {
+                id: filterDatabase;
+                imgSource: "qrc:/other/Database"
+                isCheckable: true;
+                width: 30;
+                height: 20;
+                anchors.right: filterDirectory.left;
+                anchors.margins: 5;
+                anchors.verticalCenter: parent.verticalCenter;
+                onButtonClicked: contentInfoModel.setOnlyBase(checked);
+            }
+
+            ImgButton
+            {
+                id: filterDirectory;
+                imgSource: "qrc:/other/Directory"
+                isCheckable: true;
+                width: 30;
+                height: 20;
+                anchors.right: filterFile.left;
+                anchors.margins: 5;
+                anchors.verticalCenter: parent.verticalCenter;
+                onButtonClicked: contentInfoModel.setOnlyDirs(checked);
+            }
+
+            ImgButton
+            {
+                id: filterFile;
+                imgSource: "qrc:/other/File"
+                isCheckable: true;
+                width: 30;
+                height: 20;
+                anchors.right: parent.right;
+                anchors.margins: 5;
+                anchors.verticalCenter: parent.verticalCenter;
+                onButtonClicked: contentInfoModel.setOnlyFiles(checked);
             }
         }
 
@@ -165,6 +207,7 @@ Container
             titleText: qsTr("Cancel");
             width: 80;
             height: 30;
+            onButtonClicked: pathDialog.canceled();
         }
 
         SimpleButton
@@ -173,6 +216,7 @@ Container
             titleText: qsTr("Choose");
             width: 80;
             height: 30;
+            onButtonClicked: pathDialog.choosed(contentInfoModel.currentPath);
         }
     }
 
@@ -202,6 +246,13 @@ Container
             width: 30;
             height: 30;
             onButtonClicked: contentInfoModel.cdUp();
+        }
+
+        Rectangle
+        {
+            width: 50;
+            height: 30
+            color: "#00000000";
         }
     }
 

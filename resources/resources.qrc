@@ -23,6 +23,11 @@
         <file alias="File">images/other/file.png</file>
         <file alias="Back">images/other/back.png</file>
         <file alias="Refresh">images/other/refresh.png</file>
+        <file alias="Directory2">images/other/directory2.png</file>
+        <file alias="SymLink">images/other/symlink.png</file>
+        <file alias="Unknown">images/other/unknown.png</file>
+        <file alias="FilterDatabase">images/other/filterdatabase.png</file>
+        <file alias="FilterFolder">images/other/filterfolder.png</file>
     </qresource>
     <qresource prefix="/qml">
         <file alias="Main.qml">qml/main.qml</file>

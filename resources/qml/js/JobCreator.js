@@ -1,6 +1,23 @@
 //! args that will be pushed to menaan
 var args = new Array(6);
 
+var obj;
+
+
+function createDialog()
+{
+    var comp = Qt.createComponent("qrc:/qml/PathDialog.qml");
+    obj = comp.createObject(main);
+
+    obj.canceled.connect(form.dialogCanceled);
+    obj.choosed.connect(form.dialogCompleted);
+}
+
+function destroyDialog()
+{
+    obj.destroy();
+}
+
 // send args to menaan
 function command(id,type)
 {

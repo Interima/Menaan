@@ -10,6 +10,9 @@ Rectangle
     height: 62;
     color: "#00000000";
 
+    signal dialogCanceled();
+    signal dialogCompleted(string path);
+
     //! emit when click to back button
     signal backClicked();
     //! hold current plugin index inS model
@@ -20,6 +23,14 @@ Rectangle
 
     function calcYPos(){return flickArea.visibleArea.yPosition;}
     function calcHRatio(){return flickArea.visibleArea.heightRatio;}
+
+    onDialogCanceled: JobEngine.destroyDialog();
+    onDialogCompleted:
+    {
+        console.log(path);
+        JobEngine.setTextFor(inputPath,path);
+        JobEngine.destroyDialog();
+    }
 
     Connections
     {
@@ -69,7 +80,7 @@ Rectangle
                 width: 26;
                 height: 20;
                 imgSource: "qrc:/other/Database";
-                onButtonClicked: { menaan.openDatabase("input"); }
+                onButtonClicked: { JobEngine.createDialog(); }
             }
 
 

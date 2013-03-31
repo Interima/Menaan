@@ -50,9 +50,9 @@ Rectangle
         {
             id: _itemType;
             source: if (model.itemType==ContentTypes.File) return "qrc:/other/File"
-                  else if (model.itemType==ContentTypes.Dir) return "qrc:/other/Directory"
-                  else if (model.itemType==ContentTypes.Symlink) return "qrc:/other/File"
-                  else return "qrc:/other/File";
+                  else if (model.itemType==ContentTypes.Dir) return "qrc:/other/Directory2"
+                  else if (model.itemType==ContentTypes.Symlink) return "qrc:/other/SymLink"
+                  else return "qrc:/other/Unknown";
 
             anchors.right: parent.right;
             anchors.rightMargin: 10;

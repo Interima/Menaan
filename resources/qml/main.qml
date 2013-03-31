@@ -8,59 +8,59 @@ Rectangle
     height: 400
     color: "#4A5570"
 
-    PathDialog
+//    PathDialog
+//    {
+//        id: dialog;
+//    }
+
+    Timer
     {
-        id: dialog;
+       interval: 2000;
+       repeat: false;
+       running: true;
+       onTriggered:
+       {
+            tablet.opacity = 1;
+            splash.opacity = 0;
+       }
     }
 
-//    Timer
-//    {
-//       interval: 2000;
-//       repeat: false;
-//       running: true;
-//       onTriggered:
-//       {
-//            tablet.opacity = 1;
-//            splash.opacity = 0;
-//       }
-//    }
+    MainSplash
+    {
+        id: splash;
+        visible: true;
+        opacity: 1;
 
-//    MainSplash
-//    {
-//        id: splash;
-//        visible: true;
-//        opacity: 1;
+        Behavior on opacity
+        {
+            NumberAnimation
+            {
+                duration: 600;
+                onRunningChanged: if (!running) splash.visible = false;
+            }
+        }
+    }
 
-//        Behavior on opacity
-//        {
-//            NumberAnimation
-//            {
-//                duration: 600;
-//                onRunningChanged: if (!running) splash.visible = false;
-//            }
-//        }
-//    }
+    Connections
+    {
+        target: menaan;
+        onError: MsgEngine.errorMsg(error);
+    }
 
-//    Connections
-//    {
-//        target: menaan;
-//        onError: MsgEngine.errorMsg(error);
-//    }
+    TabWidget
+    {
+        id: tablet;
+        visible: true;
+        opacity: 0;
 
-//    TabWidget
-//    {
-//        id: tablet;
-//        visible: true;
-//        opacity: 0;
-
-//        Behavior on opacity
-//        {
-//            NumberAnimation
-//            {
-//                duration: 600;
-//            }
-//        }
-//    }
+        Behavior on opacity
+        {
+            NumberAnimation
+            {
+                duration: 600;
+            }
+        }
+    }
 
 }
 

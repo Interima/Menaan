@@ -303,30 +303,6 @@ Rectangle
                 anchors.topMargin: 15;
                 onButtonClicked: {ConfigEngine.resetConfig();}
             }
-
-            SimpleButton
-            {
-                id: exportBtn;
-                width: parent.width/2 - 5;
-                height: 26;
-                titleText: qsTr("Export");
-                anchors.left: parent.left;
-                anchors.top: saveBtn.bottom;
-                anchors.topMargin: 5;
-                onButtonClicked: {ConfigEngine.exportConfig();}
-            }
-
-            SimpleButton
-            {
-                id: importBtn;
-                width: parent.width/2 - 5;
-                height: 26;
-                titleText: qsTr("Import");
-                anchors.right: parent.right;
-                anchors.top: saveBtn.bottom;
-                anchors.topMargin: 5;
-                onButtonClicked: {ConfigEngine.importConfig();}
-            }
         }
     }
 

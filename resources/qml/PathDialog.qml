@@ -6,8 +6,10 @@ Container
     color: parent.color;
     anchors.fill: parent;
 
+    property string desttype: "input";
+
     signal canceled ();
-    signal choosed (string path);
+    signal choosed (string path, string dest);
 
     Rectangle
     {
@@ -39,8 +41,6 @@ Container
                 color: "#FFFFFF";
                 text: qsTr("Places:");
             }
-
-
         }
 
         ListView
@@ -179,7 +179,6 @@ Container
             model: contentInfoModel;
         }
 
-
         VScrollBar
         {
             id: contentVerticalScroll;
@@ -216,7 +215,17 @@ Container
             titleText: qsTr("Choose");
             width: 80;
             height: 30;
-            onButtonClicked: pathDialog.choosed(contentInfoModel.currentPath);
+            onButtonClicked:
+            {
+                if (contentInfoModel.currentPath!="/")
+                    pathDialog.choosed(contentInfoModel.currentPath+
+                                       "/"+contentListView.currentItem.filename,
+                                       pathDialog.desttype);
+                else
+                    pathDialog.choosed(contentInfoModel.currentPath+
+                                       contentListView.currentItem.filename,
+                                       pathDialog.desttype);
+            }
         }
     }
 
@@ -228,7 +237,6 @@ Container
         anchors.left: driveContent.left;
         height: 40;
         spacing: 10;
-
 
         ImgButton
         {

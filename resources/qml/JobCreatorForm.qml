@@ -11,11 +11,11 @@ Rectangle
     color: "#00000000";
 
     signal dialogCanceled();
-    signal dialogCompleted(string path);
+    signal dialogCompleted(string path,string dest);
 
     //! emit when click to back button
     signal backClicked();
-    //! hold current plugin index inS model
+    //! hold current plugin index in model
     property int pluginIndex: 0;
 
     //! Qt can't use JS binding...
@@ -28,16 +28,10 @@ Rectangle
     onDialogCompleted:
     {
         console.log(path);
-        JobEngine.setTextFor(inputPath,path);
+        if (dest==="input") JobEngine.setTextFor(inputPath,path);
+        if (dest==="output") JobEngine.setTextFor(outputPath,path);
         JobEngine.destroyDialog();
     }
-
-    Connections
-    {
-        target: menaan;
-        onDialogAnswer: JobEngine.answerArrived(sender,path);
-    }
-
 
     Flickable
     {
@@ -65,7 +59,7 @@ Rectangle
                 id: inputPath;
                 anchors.top: parent.top;
                 anchors.left: parent.left;
-                anchors.right: inputDatabaseOpenBtn.left;
+                anchors.right: inputDirectoryOpenBtn.left;
                 anchors.rightMargin: 8;
                 titleText: qsTr("Input path:");
                 defaultText: qsTr("Write input path or drag it here");
@@ -73,39 +67,14 @@ Rectangle
 
             ImgButton
             {
-                id: inputDatabaseOpenBtn;
-                anchors.bottom: inputPath.bottom;
-                anchors.right: inputFileOpenBtn.left;
-                anchors.rightMargin: 4;
-                width: 26;
-                height: 20;
-                imgSource: "qrc:/other/Database";
-                onButtonClicked: { JobEngine.createDialog(); }
-            }
-
-
-            ImgButton
-            {
-                id: inputFileOpenBtn;
-                anchors.bottom: inputPath.bottom;
-                anchors.right: inputDirectoryOpenBtn.left;
-                anchors.rightMargin: 4;
-                width: 26;
-                height: 20;
-                imgSource: "qrc:/other/File";
-                onButtonClicked: { menaan.openFile("input"); }
-            }
-
-            ImgButton
-            {
                 id: inputDirectoryOpenBtn;
                 anchors.bottom: inputPath.bottom;
                 anchors.right: inputClearBtn.left;
-                anchors.rightMargin: 4;
+                anchors.rightMargin: 8;
                 width: 26;
                 height: 20;
                 imgSource: "qrc:/other/Directory";
-                onButtonClicked: { menaan.openDirectory("input");}
+                onButtonClicked: { JobEngine.createDialog("input");}
             }
 
             ImgButton
@@ -126,7 +95,7 @@ Rectangle
                 anchors.top: inputPath.bottom;
                 anchors.topMargin: 10;
                 anchors.left: parent.left;
-                anchors.right: outputFileOpenBtn.left;
+                anchors.right: outputDirectoryOpenBtn.left;
                 anchors.rightMargin: 8;
                 titleText: qsTr("Output path:");
                 defaultText: qsTr("Write output path or drag it here");
@@ -134,26 +103,14 @@ Rectangle
 
             ImgButton
             {
-                id: outputFileOpenBtn;
-                anchors.bottom: outputPath.bottom;
-                anchors.right: outputDirectoryOpenBtn.left;
-                anchors.rightMargin: 4;
-                width: 26;
-                height: 20;
-                imgSource: "qrc:/other/File";
-                onButtonClicked: { menaan.openFile("output");}
-            }
-
-            ImgButton
-            {
                 id: outputDirectoryOpenBtn;
                 anchors.bottom: outputPath.bottom;
                 anchors.right: outputClearBtn.left;
-                anchors.rightMargin: 4;
+                anchors.rightMargin: 8;
                 width: 26;
                 height: 20;
                 imgSource: "qrc:/other/Directory";
-                onButtonClicked: { menaan.openDirectory("output"); }
+                onButtonClicked: { JobEngine.createDialog("output"); }
             }
 
             ImgButton

@@ -4,10 +4,11 @@ var args = new Array(6);
 var obj;
 
 
-function createDialog()
+function createDialog(arg)
 {
     var comp = Qt.createComponent("qrc:/qml/PathDialog.qml");
     obj = comp.createObject(main);
+    obj.desttype = arg;
 
     obj.canceled.connect(form.dialogCanceled);
     obj.choosed.connect(form.dialogCompleted);
@@ -29,7 +30,7 @@ function command(id,type)
 function verificator(type)
 {
     // validate input path
-    if ((inputPath.realText.length==0)||
+    if ((inputPath.realText.length === 0)||
         (inputPath.realText === inputPath.defaultText))
     {
         errorMsg(qsTr("Invalid input path."));

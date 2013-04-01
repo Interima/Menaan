@@ -114,23 +114,3 @@ function resetConfig()
     obj.titleText = qsTr("Mena'an");
     obj.dataText = qsTr("Config has been restored.\nRestart application.\n\nClick to close.");
 }
-
-function importConfig()
-{
-    var comp = Qt.createComponent("Message.qml");
-    var obj = comp.createObject(configTab);
-    obj.titleText = qsTr("Mena'an");
-    obj.dataText = qsTr("Sorry, it's not working.\nComing soon.\n\nClick to close.");
-
-    console.log("Coming soon");
-}
-
-function exportConfig()
-{
-    var comp = Qt.createComponent("Message.qml");
-    var obj = comp.createObject(configTab);
-    obj.titleText = qsTr("Mena'an");
-    obj.dataText = qsTr("Sorry, it's not working.\nComing soon.\n\nClick to close.");
-
-    console.log("Coming soon");
-}

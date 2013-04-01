@@ -8,6 +8,8 @@ Rectangle
     height: 30;
     color: "#00000000";
 
+    property alias filename: _itemName.text;
+
     MouseArea
     {
         id: ma;
